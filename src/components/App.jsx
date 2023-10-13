@@ -13,7 +13,7 @@ export class App extends Component{
     filter: '',
   }
 
-  addContact = (name, number) => {
+  addContact = ({name, number}) => {
     if(this.state.contacts.find((contact)=>contact.name.toLowerCase() === name.toLowerCase())){
       alert(`${name} is already in contacts`)
       return
@@ -51,7 +51,7 @@ export class App extends Component{
 render() {
     return <>
     <Section title={'Phonebook'}> 
-      <PhoneBookForm addContact={this.addContact}></PhoneBookForm>
+      <PhoneBookForm addContact={(v) => this.addContact(v)}></PhoneBookForm>
     </Section>
   <br/>
     <Filter value={this.state.filter} handleFilterChange={this.handleFilterChange}></Filter>
